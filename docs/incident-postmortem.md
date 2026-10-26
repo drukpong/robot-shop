@@ -29,7 +29,7 @@ eligible placement to a worker in that Availability Zone.
 The existing Redis PVC and PV were preserved. The volume was not deleted.
 
 ## Verification
-The last recorded Kubernetes check showed all 11 Robot Shop pods at 1/1 Ready.
+Kubernetes verification showed the Robot Shop application pods Running and Ready.
 The Helm release status and external HTTP response still require final
 verification after the cluster API connectivity issue.
 
