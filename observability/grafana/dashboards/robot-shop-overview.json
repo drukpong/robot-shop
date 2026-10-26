@@ -1,0 +1,45 @@
+{
+  "title": "Robot Shop - Service Overview",
+  "uid": "robot-shop-overview",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "30s",
+  "timezone": "browser",
+  "tags": ["robot-shop", "eks", "capstone"],
+  "panels": [
+    {
+      "id": 1,
+      "title": "Pods by Namespace",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "targets": [
+        {
+          "expr": "sum by (namespace) (kube_pod_info)",
+          "legendFormat": "{{namespace}}",
+          "refId": "A"
+        }
+      ],
+      "gridPos": {"h": 9, "w": 12, "x": 0, "y": 0}
+    },
+    {
+      "id": 2,
+      "title": "Ready Robot Shop Pods",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "targets": [
+        {
+          "expr": "sum(kube_pod_status_ready{namespace=\"robot-shop\", condition=\"true\"})",
+          "legendFormat": "Ready pods",
+          "refId": "A"
+        }
+      ],
+      "gridPos": {"h": 9, "w": 12, "x": 12, "y": 0}
+    }
+  ]
+}
